@@ -1,28 +1,39 @@
 import React from 'react';
-import { Text as RNText } from 'react-native';
-import { tuple } from '../../utils';
+import {
+  Text as RNText,
+  TextStyle,
+} from 'react-native';
+import { Consts } from '../../constants';
 
-const TextSizes = tuple('S', 'M', 'L', 'XL', 'XXL');
-export type TextSize = (typeof TextSizes)[number];
-
-interface Props {
-  size?: TextSize,
-  children: React.ReactNode,
+export interface TextProps {
+  size: 'S' | 'M' | 'L' | 'XL' | 'XXL';
+  style?: TextStyle;
+  bold?: boolean,
+  children: React.ReactNode;
 }
 
-const defaultProps: Props = {
-  size: 'M',
-  children: null
+const getSize: { [key: string]: number } = Consts;
+
+const checkSize = (size: string): number => {
+  return getSize[size] || 0;
 }
 
-const Text: React.SFC<Props> = ({
+const Text = ({
+  size,
   children,
-}) => (
-    <RNText>
+  style,
+  bold,
+  ...rest
+}: TextProps) => (
+    <RNText {...rest}
+      style={{
+        ...style,
+        fontSize: checkSize(size),
+        fontWeight: bold ? '700' : '400',
+      }}
+    >
       {children}
     </RNText>
   );
-
-Text.defaultProps = defaultProps;
 
 export default Text;

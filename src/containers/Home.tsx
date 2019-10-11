@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import Header from '../components/Header';
+import Title from '../components/Title';
 import {
   scale,
   wScale,
@@ -23,14 +24,18 @@ class Home extends Component<Props> {
     return (
       <View style={styles.container}>
         <StatusBar hidden />
-        <View style={styles.content}>
-          <ScrollView
-            scrollEventThrottle={16}
-            showsVerticalScrollIndicator={false}
-          >
+        <ScrollView
+          scrollEventThrottle={16}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.content}>
             <Header />
-          </ScrollView>
-        </View>
+            <Title>Pokedex</Title>
+            <View>
+
+            </View>
+          </View>
+        </ScrollView>
       </View>
     );
   }
