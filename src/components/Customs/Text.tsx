@@ -6,7 +6,7 @@ import {
 import { Consts } from '../../constants';
 
 export interface TextProps {
-  size: 'S' | 'M' | 'L' | 'XL' | 'XXL';
+  size?: 'S' | 'M' | 'L' | 'XL' | 'XXL';
   style?: TextStyle;
   bold?: boolean,
   children: React.ReactNode;
@@ -19,7 +19,7 @@ const checkSize = (size: string): number => {
 }
 
 const Text = ({
-  size,
+  size = 'M',
   children,
   style,
   bold,
