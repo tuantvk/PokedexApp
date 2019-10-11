@@ -1,27 +1,28 @@
 import React from 'react';
 import { Text as RNText } from 'react-native';
+import { tuple } from '../../utils';
 
-enum TextSize {
-  S = 12,
-  M = 14,
-  L = 16,
-  XL = 20,
-  XXL = 26
-}
+const TextSizes = tuple('S', 'M', 'L', 'XL', 'XXL');
+export type TextSize = (typeof TextSizes)[number];
 
 interface Props {
   size?: TextSize,
   children: React.ReactNode,
 }
 
-const Text = ({
-  size,
+const defaultProps: Props = {
+  size: 'M',
+  children: null
+}
+
+const Text: React.SFC<Props> = ({
   children,
-}: Props) => (
+}) => (
     <RNText>
       {children}
     </RNText>
   );
 
+Text.defaultProps = defaultProps;
 
 export default Text;
