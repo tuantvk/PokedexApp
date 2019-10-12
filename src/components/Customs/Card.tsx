@@ -9,13 +9,14 @@ import {
   scale,
   wScale,
   hScale,
+  checkBgPokedex,
 } from '../../utils';
 import { Colors } from '../../constants';
 import Badge from './Badge';
 
 export interface CardProps {
   name: string;
-  type?: string[];
+  type?: any[];
   img?: string;
 }
 
@@ -25,7 +26,11 @@ const Card = ({
   img,
   ...rest
 }: CardProps) => (
-    <View style={styles.card}>
+    <View
+      style={{
+        ...styles.card,
+        backgroundColor: checkBgPokedex(type || []),
+      }}>
       <Text
         color={Colors.white}
         style={styles.name}
@@ -51,7 +56,6 @@ const styles = StyleSheet.create({
     borderRadius: scale(11),
     width: wScale(122),
     height: hScale(100),
-    backgroundColor: '#49d0b0',
     marginBottom: scale(10),
     flexDirection: 'column',
     marginRight: scale(10),
