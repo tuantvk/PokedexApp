@@ -39,8 +39,8 @@ const Card = ({
         {name}
       </Text>
       {type && type.map((t, index) => (
-        <Badge>
-          <Text color={Colors.white} size="S" key={index}>{t}</Text>
+        <Badge key={index}>
+          <Text color={Colors.white} size="S">{t}</Text>
         </Badge>
       ))}
       <Image

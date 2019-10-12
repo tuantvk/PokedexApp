@@ -5,8 +5,8 @@ import {
 } from 'react-native';
 import { scale } from '../../utils';
 
-const Badge = ({ children }: any) => (
-  <View style={styles.badge}>
+const Badge = ({ children, style }: any) => (
+  <View style={[styles.badge, style]}>
     {children}
   </View>
 );

@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
 import {
   View,
-  ScrollView,
   StatusBar,
   StyleSheet,
   FlatList,
+  TouchableOpacity,
 } from 'react-native';
 import Header from '../components/Header';
 import Title from '../components/Title';
 import {
   scale,
-  wScale,
-  hScale,
 } from '../utils';
 import { fetchPokedex } from '../actions/ApiClient';
 import {
-  Text,
   Card,
+  ScrollView,
 } from '../components/Customs';
+import { POKEDEX } from '../routes';
+import {
+  NavigationParams,
+  NavigationScreenProp,
+} from 'react-navigation';
 
 interface Props {
-
+  navigation: NavigationScreenProp<NavigationParams>;
 }
 
 class Home extends Component<Props> {
@@ -38,7 +41,17 @@ class Home extends Component<Props> {
     }
   };
 
-  _renderItem = ({ item }: any) => <Card {...item} />
+  _openPokedexDetail = (pokedex: object) => {
+    this.props.navigation.navigate(POKEDEX.routeName, {
+      pokedex
+    });
+  }
+
+  _renderItem = ({ item }: any) => (
+    <TouchableOpacity activeOpacity={.95} onPress={() => this._openPokedexDetail(item)}>
+      <Card {...item} />
+    </TouchableOpacity>
+  );
 
   _keyExtractor = (item: any) => item.id.toString();
 
@@ -48,10 +61,7 @@ class Home extends Component<Props> {
     return (
       <View style={styles.container}>
         <StatusBar hidden />
-        <ScrollView
-          scrollEventThrottle={16}
-          showsVerticalScrollIndicator={false}
-        >
+        <ScrollView>
           <View style={styles.content}>
             <Header />
             <Title style={styles.title}>Pokedex</Title>
