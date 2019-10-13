@@ -36,6 +36,7 @@ const Text = ({
         fontSize: checkSize(size),
         fontWeight: bold ? '700' : '400',
         color: color || Colors.black,
+        fontFamily: bold ? 'Montserrat-Bold' : 'Montserrat-Regular',
       }}
     >
       {children}

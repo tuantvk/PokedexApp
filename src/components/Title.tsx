@@ -3,9 +3,10 @@ import { Text } from './Customs';
 
 const Title = ({
   children,
+  size,
   ...rest
 }: any) => (
-    <Text size="XL" bold={true} {...rest}>
+    <Text size={size || "XL"} bold={true} {...rest}>
       {children}
     </Text>
   );

@@ -24,7 +24,7 @@ const Header = ({
       />
       <Icon
         color={color || Colors.black}
-        size={wScale(25)}
+        size={wScale(23)}
         name={rightIcon || "ios-menu"}
       />
     </Row>
