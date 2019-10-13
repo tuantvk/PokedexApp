@@ -52,13 +52,14 @@ interface PokedexProps {
 
 interface PokedexState {
   index: number,
-  pokedex: any,
+  pokedex: object,
 }
 
 class Pokedex extends Component<PokedexProps, PokedexState, State> {
   state = {
     index: 0,
-    pokedex: null,
+    isLiked: false,
+    pokedex: {},
     routes: [
       { key: 'about', title: 'About' },
       { key: 'baseStats', title: 'Base Stats' },
@@ -94,8 +95,10 @@ class Pokedex extends Component<PokedexProps, PokedexState, State> {
 
   _backHome = () => this.props.navigation.goBack();
 
+  _likePokedex = () => this.setState({ isLiked: !this.state.isLiked });
+
   render() {
-    const { pokedex, index, routes } = this.state;
+    const { pokedex, index, routes, isLiked } = this.state;
     const navigationState = { index, routes };
 
     if (_isEmpty(pokedex)) {
@@ -116,11 +119,13 @@ class Pokedex extends Component<PokedexProps, PokedexState, State> {
               onPress={this._backHome}
               rightIcon="ios-heart-empty"
               color={Colors.white}
+              onPressLike={this._likePokedex}
+              like={isLiked}
             />
             <Title size="XXL" color={Colors.white}>{pokedex.name}</Title>
             <Text bold={true} style={styles.num} color={Colors.white}>#{pokedex.num}</Text>
             <View style={styles.row}>
-              {pokedex.type.map((t, i) => (
+              {pokedex.type.map((t: any, i: number) => (
                 <Badge key={i} style={styles.badge}>
                   <Text color={Colors.white} size="S">{t}</Text>
                 </Badge>

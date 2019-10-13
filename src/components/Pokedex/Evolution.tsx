@@ -84,7 +84,7 @@ const Evolution = ({
     });
   }
 
-  const totalEvolution = _sortBy(_concat(
+  const totalEvolution: any = _sortBy(_concat(
     prev_evolution,
     next_evolution,
     [{ num, name }],

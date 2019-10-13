@@ -15,8 +15,6 @@ export const hScale = (size: number, factor: number = 0.5) => size + (scale(size
 
 export const diff = (arr1: any[], arr2: any[]) => {
   var values: any[] = [];
-  arr1.sort();
-  arr2.sort();
   for (var i = 0; i < arr1.length; i++) {
     if (arr2.indexOf(arr1[i]) > -1) {
       values.push(arr1[i]);
