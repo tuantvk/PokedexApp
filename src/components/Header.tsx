@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Row } from './Customs';
@@ -15,13 +16,16 @@ interface HeaderProps {
 const Header = ({
   rightIcon,
   color,
+  ...rest
 }: HeaderProps) => (
     <Row>
-      <Icon
-        color={color || Colors.black}
-        size={wScale(25)}
-        name="ios-arrow-round-back"
-      />
+      <TouchableOpacity activeOpacity={1} {...rest}>
+        <Icon
+          color={color || Colors.black}
+          size={wScale(25)}
+          name="ios-arrow-round-back"
+        />
+      </TouchableOpacity>
       <Icon
         color={color || Colors.black}
         size={wScale(23)}

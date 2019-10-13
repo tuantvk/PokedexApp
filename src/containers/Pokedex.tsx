@@ -92,6 +92,8 @@ class Pokedex extends Component<PokedexProps, PokedexState, State> {
     );
   };
 
+  _backHome = () => this.props.navigation.goBack();
+
   render() {
     const { pokedex, index, routes } = this.state;
     const navigationState = { index, routes };
@@ -110,7 +112,11 @@ class Pokedex extends Component<PokedexProps, PokedexState, State> {
               ...styles.header,
               backgroundColor: checkBgPokedex(pokedex.type),
             }}>
-            <Header rightIcon="ios-heart-empty" color={Colors.white} />
+            <Header
+              onPress={this._backHome}
+              rightIcon="ios-heart-empty"
+              color={Colors.white}
+            />
             <Title size="XXL" color={Colors.white}>{pokedex.name}</Title>
             <Text bold={true} style={styles.num} color={Colors.white}>#{pokedex.num}</Text>
             <View style={styles.row}>
@@ -185,7 +191,7 @@ const styles = StyleSheet.create({
   },
   content: {
     backgroundColor: Colors.white,
-    height: height / 1.5,
+    height: height / 1.8,
     borderTopLeftRadius: scale(25),
     borderTopRightRadius: scale(25),
     top: - scale(25),

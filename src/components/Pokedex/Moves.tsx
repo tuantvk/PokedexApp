@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { Text } from '../Customs';
 
 export class Moves extends Component {
   render() {
     return (
       <View>
-        <Text> textInComponent </Text>
+        <Text>Moves</Text>
       </View>
     )
   }
