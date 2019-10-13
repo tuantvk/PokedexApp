@@ -20,7 +20,10 @@ import {
   wScale,
   hScale,
 } from '../utils';
-import { Colors } from '../constants';
+import {
+  Colors,
+  Images,
+} from '../constants';
 import { NavigationStackProp } from 'react-navigation-stack';
 import {
   TabView,
@@ -137,7 +140,17 @@ class Pokedex extends Component<PokedexProps, PokedexState, State> {
               <Image
                 source={{ uri: pokedex.img }}
                 style={styles.imgPokedex}
-                resizeMode="stretch"
+                resizeMode="contain"
+              />
+            </View>
+            <View style={styles.imgLogo}>
+              <Image
+                source={{ uri: Images.pokedex_logo }}
+                style={{
+                  ...styles.imgPokedex,
+                  opacity: .08,
+                }}
+                resizeMode="contain"
               />
             </View>
             <TabView
@@ -185,14 +198,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    top: scale(-140),
+    top: scale(-175),
     zIndex: 99,
     left: 0,
     right: 0,
   },
+  imgLogo: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: scale(-200),
+    zIndex: -1,
+    right: scale(-50),
+  },
   imgPokedex: {
-    width: wScale(200),
-    height: hScale(200),
+    width: wScale(240),
+    height: hScale(240),
   },
   content: {
     backgroundColor: Colors.white,
@@ -200,7 +221,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: scale(25),
     borderTopRightRadius: scale(25),
     top: - scale(25),
-    zIndex: 1,
+    zIndex: 9,
   },
   tabbar: {
     backgroundColor: Colors.white,

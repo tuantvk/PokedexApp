@@ -11,7 +11,10 @@ import {
   hScale,
   checkBgPokedex,
 } from '../../utils';
-import { Colors } from '../../constants';
+import {
+  Colors,
+  Images,
+} from '../../constants';
 import Badge from './Badge';
 
 export interface CardProps {
@@ -45,8 +48,13 @@ const Card = ({
       ))}
       <Image
         source={{ uri: img }}
-        resizeMode="stretch"
+        resizeMode="contain"
         style={styles.img}
+      />
+      <Image
+        source={{ uri: Images.pokedex_logo }}
+        style={styles.imgLogo}
+        resizeMode="contain"
       />
     </View>
   );
@@ -66,11 +74,19 @@ const styles = StyleSheet.create({
     marginBottom: scale(6),
   },
   img: {
-    width: wScale(71),
-    height: hScale(71),
+    width: wScale(75),
+    height: hScale(75),
     position: 'absolute',
-    right: scale(5),
-    bottom: scale(5),
+    right: scale(3),
+    bottom: scale(3),
+  },
+  imgLogo: {
+    width: wScale(90),
+    height: hScale(90),
+    position: 'absolute',
+    right: scale(-18),
+    bottom: scale(-12),
+    opacity: .13,
   }
 });
 
